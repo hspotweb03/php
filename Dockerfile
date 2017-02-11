@@ -20,6 +20,7 @@ RUN a2enmod rewrite expires
 
 # VOLUME /var/www/html
 
+COPY docker-php-ext-custom.ini /usr/local/etc/php/conf.d/
 COPY docker-entrypoint.sh /usr/local/bin/
 RUN ln -s usr/local/bin/docker-entrypoint.sh /entrypoint.sh # backwards compat
 
