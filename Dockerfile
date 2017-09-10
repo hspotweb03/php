@@ -1,4 +1,4 @@
-FROM php:7.1-apache
+FROM php:5-apache
 
 # install the PHP extensions we need
 RUN apt-get update && apt-get install -y libpng12-dev libjpeg-dev libfreetype6-dev && rm -rf /var/lib/apt/lists/* \
