@@ -1,8 +1,9 @@
 FROM php:7.1-apache
 
 # install the PHP extensions we need
-RUN apt-get update && apt-get install -y libpng12-dev libjpeg-dev libfreetype6-dev libssh2-1-dev && rm -rf /var/lib/apt/lists/* \
+RUN apt-get update && apt-get install -y libpng12-dev libjpeg-dev libfreetype6-dev libssh2-1-dev git && rm -rf /var/lib/apt/lists/* \
 	&& docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr \
+	&& git clone https://github.com/php/pecl-networking-ssh2.git /usr/src/php/ext/ssh2 \
 	&& docker-php-ext-install gd mysqli opcache pdo pdo_mysql ssh2
 
 # set recommended PHP.ini settings
